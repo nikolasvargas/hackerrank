@@ -24,12 +24,6 @@
 #  https://www.hackerrank.com/challenges/the-minion-game/
 
 
-# def minion_game(string: str) -> int:
-#     vowels, length = 'AEIOU', len(string)
-#     for i in range
-#     return 0
-
-
 if __name__ == '__main__':
     s = input()
     vowels = 'AEIOU'
