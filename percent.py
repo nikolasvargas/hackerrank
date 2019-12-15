@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  nested_lists.py
+#  percent.py
 #
 #  Copyright 2019 Níkolas Vargas <vargasnikolass@gmail.com>
 #
@@ -21,17 +21,18 @@
 #  MA 02110-1301, USA.
 #
 #
-#  https://www.hackerrank.com/challenges/nested-list/problem
-
-
-def main(args) -> int:
-    sorted_grade = sorted(list({i[1] for i in args}))
-    names = "\n".join(sorted([i[0] for i in args if i[1] == sorted_grade[1]]))
-    print(names)
-    return 0
+#  https://www.hackerrank.com/challenges/finding-the-percentage/problem
 
 
 if __name__ == '__main__':
+    from functools import reduce
+    from operator import add
     n = int(input())
-    grades = [[input(), float(input())] for _ in range(n)]
-    main(grades)
+    student_marks = {}
+    for _ in range(n):
+        name, *line = input().split()
+        scores = list(map(float, line))
+        student_marks[name] = scores
+    query_name = input()
+    avg = len(student_marks[query_name])
+    print("{:.2f}".format(reduce(add, student_marks[query_name]) / float(avg)))
