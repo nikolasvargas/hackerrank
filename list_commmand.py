@@ -22,25 +22,36 @@
 #
 #
 #  https://www.hackerrank.com/challenges/python-lists/problem
+"""
+Input (stdin)
+-------------
+12
+insert 0 5
+insert 1 10
+insert 0 6
+print
+remove 6
+append 9
+append 1
+sort
+print
+pop
+reverse
+print
 
+Expected Output
+---------------
+[6, 5, 10]
+[1, 5, 9, 10]
+[9, 5, 1]
+"""
 if __name__ == '__main__':
     N = int(input())
     lista = []
 
-    inplace_command = {
-        "sort": lista.sort,
-        "pop": lista.pop,
-        "reverse": lista.reverse
-    }
-
     for i in range(0, N):
         command_name, *params = input().split()
-
-        if command_name == "print":
-            print(lista)
-
-        if command_name in ["insert", "remove", "append"]:
+        try:
             getattr(lista, command_name)(*(map(int, params)))
-
-        if not params and command_name != "print":
-            inplace_command[command_name]()
+        except AttributeError:
+            print(lista)
