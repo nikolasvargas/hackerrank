@@ -22,9 +22,18 @@
 #
 #
 #  https://www.hackerrank.com/challenges/find-a-string/problem
+"""
+Sample Input
+ABCDCDC
+CDC
+
+Sample Output
+2
+"""
+import re
 
 def count_substring(string, sub_string):
-    return
+    return len(re.findall(f"(?={sub_string})", string))
 
 if __name__ == '__main__':
     string = input().strip()
